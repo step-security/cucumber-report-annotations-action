@@ -1,0 +1,69 @@
+name: 'Cucumber Report to Annotations'
+description: 'This GitHub Action parses Cucumber test reports (JSON or NDJSON) and publishes them as GitHub Annotations—making test feedback visible directly in pull requests and commits'
+
+branding:
+  icon: check-square
+  color: green
+
+inputs:
+  access-token:
+    description: "GitHub token used to post annotations"
+    required: true
+    default: ${{ github.token }}
+
+  path:
+    description: "Glob pattern to locate Cucumber JSON or NDJSON report files"
+    required: true
+    default: "**/cucumber-report.json"
+
+  check-status-on-error:
+    description: "Check conclusion when errors are found. Can be 'success', 'neutral', or 'failure'."
+    required: true
+    default: 'failure'
+
+  check-status-on-undefined:
+    description: "Check conclusion when undefined steps are found. Can be 'success', 'neutral', or 'failure'."
+    required: true
+    default: 'success'
+
+  check-status-on-pending:
+    description: "Check conclusion when pending steps are found. Can be 'success', 'neutral', or 'failure'."
+    required: true
+    default: 'success'
+
+  annotation-status-on-error:
+    description: "Annotation level for errors. Can be 'notice', 'warning', or 'failure'."
+    required: true
+    default: 'failure'
+
+  annotation-status-on-undefined:
+    description: "Annotation level for undefined steps. Can be 'notice', 'warning', or 'failure'. If unset, no annotation is generated for undefined steps."
+    required: false
+
+  annotation-status-on-pending:
+    description: "Annotation level for pending steps. Can be 'notice', 'warning', or 'failure'. If unset, no annotation is generated for pending steps."
+    required: false
+
+  show-number-of-error-on-check-title:
+    description: "If true, the number of errors will be shown in the check run title."
+    required: true
+    default: 'true'
+
+  show-global-summary-report:
+    description: "If true, includes a summary report for each feature file."
+    required: true
+    default: 'false'
+
+  number-of-test-error-to-fail-job:
+    description: "Minimum number of test errors required to fail the job. Use -1 to never fail the build."
+    required: true
+    default: -1
+
+  name:
+    description: "Name of the GitHub Check run"
+    required: true
+    default: 'Cucumber report'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
