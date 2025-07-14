@@ -11,8 +11,7 @@
     "url": "git+https://github.com/step-security/cucumber-report-annotations-action.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "step-security",
   "bugs": {
     "url": "https://github.com/step-security/cucumber-report-annotations-action/issues"
   },
