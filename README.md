@@ -1,3 +1,5 @@
+[![StepSecurity Maintained Action](https://raw.githubusercontent.com/step-security/maintained-actions-assets/main/assets/maintained-action-banner.png)](https://docs.stepsecurity.io/actions/stepsecurity-maintained-actions)
+
 # 🧪 Cucumber Report Annotations Action
 
 This GitHub Action parses Cucumber test reports (JSON or NDJSON) and publishes them as GitHub Annotations—making test feedback visible directly in pull requests and commits.
